@@ -1,0 +1,37 @@
+{
+  "name": "priti-carbon-marketplace",
+  "version": "1.0.0",
+  "description": "Production-ready Indian carbon credits marketplace with integrated payments",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed'",
+    "start": "echo 'Static site ready'",
+    "dev": "echo 'Development mode'"
+  },
+  "dependencies": {
+    "razorpay": "^2.9.2",
+    "nodemailer": "^6.9.7",
+    "mongodb": "^6.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": [
+    "carbon-credits",
+    "marketplace",
+    "india",
+    "sustainability",
+    "payments",
+    "razorpay",
+    "bharatpe",
+    "googlepay"
+  ],
+  "author": "Priti Carbon Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pushkarbadiger/priti-carbon.git"
+  }
+}

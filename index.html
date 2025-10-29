@@ -1,681 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priti Carbon</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Priti Carbon | Indian Carbon Credit Marketplace</title>
+    <meta name="description"
+        content="Connecting Indian farmers and companies for verified carbon credit trading with secure payments and real-time analytics." />
+    <link rel="icon" href="assets/priti-carbon-logo-4k.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Status Banner -->
-    <div id="status-banner" class="bg-yellow-400 border-l-4 border-yellow-600 text-black px-4 py-3 relative" style="display: none;">
-        <div class="flex items-center justify-between max-w-7xl mx-auto">
-            <div class="flex items-center">
-                <i class="fas fa-exclamation-triangle text-yellow-800 mr-3"></i>
-                <p class="font-semibold">
-                    ⚠️ Heads Up: Our platform is being upgraded. For now, carbon credit payments may happen online or offline, depending on your region.
-                </p>
-            </div>
-            <button onclick="dismissBanner()" class="ml-4 text-yellow-800 hover:text-yellow-900 font-bold text-xl">
-                <i class="fas fa-times"></i>
-            </button>
+
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Navbar -->
+    <nav class="flex items-center justify-between p-6 shadow-md">
+        <div class="flex items-center space-x-3">
+            <img src="assets/priti-carbon-logo-4k.png" alt="Priti Carbon Logo" class="h-10 w-10" />
+            <h1 class="text-xl font-semibold">Priti Carbon</h1>
         </div>
-    </div>
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <i class="fas fa-leaf text-green-600 text-2xl mr-3"></i>
-                    <span class="font-bold text-xl text-gray-800">Priti Carbon</span>
-                    <span class="ml-2 text-sm bg-orange-100 text-orange-800 px-2 py-1 rounded-full">🇮🇳 India</span>
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" onclick="showPage('home')" class="nav-link text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="#" onclick="showPage('marketplace')" class="nav-link text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Marketplace</a>
-                    <a href="#" onclick="showPage('dashboard')" id="dashboard-link" class="nav-link text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium" style="display: none;">Dashboard</a>
-                    <a href="#" onclick="showPage('support')" class="nav-link text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Support</a>
-                    <a href="#" onclick="showPage('admin-dashboard')" id="admin-link" class="nav-link text-red-600 hover:text-red-700 px-3 py-2 rounded-md text-sm font-medium" style="display: none;">Admin</a>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <div id="auth-buttons">
-                        <button onclick="showPage('login')" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Login</button>
-                        <button onclick="showPage('signup')" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium">Sign Up</button>
-                    </div>
-                    <div id="user-menu" style="display: none;" class="flex items-center space-x-4">
-                        <span id="user-greeting" class="text-gray-700 font-medium"></span>
-                        <button onclick="logout()" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium">
-                            <i class="fas fa-sign-out-alt mr-1"></i>Logout
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div class="space-x-6">
+            <a href="#features" class="hover:text-green-600">Features</a>
+            <a href="#analytics" class="hover:text-green-600">Analytics</a>
+            <a href="#payments" class="hover:text-green-600">Payments</a>
+            <a href="#contact" class="hover:text-green-600">Contact</a>
+            <a href="https://priticarbon.vercel.app/admin"
+                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Admin Panel</a>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        
-        <!-- Home Page -->
-        <div id="home-page" class="page-content">
-            <div class="text-center">
-                <h1 class="text-4xl font-bold text-gray-900 mb-6">Welcome to Priti Carbon</h1>
-                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">Connect farmers and companies in the fight against climate change. Trade verified carbon credits and build a sustainable future together.</p>
-                
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-12">
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="text-center">
-                            <i class="fas fa-seedling text-green-600 text-3xl mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">For Farmers</h3>
-                            <p class="text-gray-600 mb-6">Earn income by selling carbon credits from your sustainable farming practices.</p>
-                            <button onclick="showPage('signup')" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium">Get Started as Farmer</button>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="text-center">
-                            <i class="fas fa-building text-blue-600 text-3xl mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">For Companies</h3>
-                            <p class="text-gray-600 mb-6">Offset your carbon footprint by purchasing verified carbon credits.</p>
-                            <button onclick="showPage('signup')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">Get Started as Company</button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="text-center py-20 bg-gradient-to-b from-green-50 to-white">
+        <h2 class="text-4xl font-bold mb-4">Empowering Indian Farmers through Carbon Credits 🌱</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A verified carbon credit marketplace with real-time analytics, secure payments, and impact tracking.
+        </p>
+        <div class="mt-6">
+            <a href="#signup" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">Get Started</a>
+            <a href="#features" class="ml-4 text-green-700 font-semibold hover:underline">Explore Features</a>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section id="features" class="py-16 bg-white text-center">
+        <h3 class="text-3xl font-semibold mb-12">✨ Key Features</h3>
+        <div class="grid md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+            <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
+                <h4 class="text-xl font-bold mb-3">💳 Integrated Payments</h4>
+                <p class="text-gray-600">Razorpay, BharatPe, and Google Pay APIs with automated receipts and logs.</p>
+            </div>
+            <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
+                <h4 class="text-xl font-bold mb-3">📊 Real-Time Analytics</h4>
+                <p class="text-gray-600">Live carbon credit pricing between ₹600–800/ton powered by Chart.js.</p>
+            </div>
+            <div class="p-6 border rounded-2xl shadow-sm hover:shadow-lg transition">
+                <h4 class="text-xl font-bold mb-3">🔐 Secure Authentication</h4>
+                <p class="text-gray-600">JWT-based authentication with role-based dashboards for farmers and companies.
+                </p>
             </div>
         </div>
+    </section>
 
-        <!-- Login Page -->
-        <div id="login-page" class="page-content hidden">
-            <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-8">
-                <div class="text-center mb-8">
-                    <i class="fas fa-leaf text-green-600 text-3xl mb-4"></i>
-                    <h2 class="text-2xl font-bold text-gray-900">Login to Your Account</h2>
-                </div>
-                
-                <form id="login-form" onsubmit="handleLogin(event)">
-                    <div class="mb-4">
-                        <label for="login-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                        <input type="email" id="login-email" required autocomplete="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="login-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                        <input type="password" id="login-password" required autocomplete="current-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                    
-                    <div class="mb-4 flex items-center">
-                        <input type="checkbox" id="remember-me" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
-                    </div>
-                    
-                    <div id="login-error" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded hidden"></div>
-                    
-                    <button type="submit" id="login-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
-                        <span id="login-text">Login</span>
-                        <i id="login-loading" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-                    </button>
-                </form>
-                
-                <div class="mt-4 text-center">
-                    <a href="#" onclick="showForgotPassword()" class="text-sm text-green-600 hover:text-green-700">Forgot your password?</a>
-                </div>
-                
-                <div class="mt-6 text-center">
-                    <p class="text-gray-600">Don't have an account? 
-                        <a href="#" onclick="showPage('signup')" class="text-green-600 hover:text-green-700 font-medium">Sign up here</a>
-                    </p>
-                </div>
+    <!-- Analytics Chart -->
+    <section id="analytics" class="py-20 bg-green-50 text-center">
+        <h3 class="text-3xl font-semibold mb-8">📈 Real-Time Market Analytics</h3>
+        <canvas id="marketChart" class="max-w-4xl mx-auto"></canvas>
+        <script>
+            const ctx = document.getElementById('marketChart');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1D', '7D', '15D', '30D'],
+                    datasets: [{
+                        label: 'Carbon Credit Price (₹/ton)',
+                        data: [620, 640, 670, 700],
+                        borderWidth: 3,
+                        borderColor: '#16a34a',
+                        backgroundColor: 'rgba(22, 163, 74, 0.2)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: false }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+    <!-- Payments Section -->
+    <section id="payments" class="py-16 bg-white text-center">
+        <h3 class="text-3xl font-semibold mb-10">💰 Payment Integration</h3>
+        <div class="grid md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+            <div class="p-6 border rounded-2xl">
+                <h4 class="text-xl font-bold mb-2">Razorpay</h4>
+                <p class="text-gray-600">Supports UPI, cards, and net banking with auto receipts.</p>
+            </div>
+            <div class="p-6 border rounded-2xl">
+                <h4 class="text-xl font-bold mb-2">Google Pay</h4>
+                <p class="text-gray-600">Fast and secure payments for mobile users.</p>
+            </div>
+            <div class="p-6 border rounded-2xl">
+                <h4 class="text-xl font-bold mb-2">BharatPe</h4>
+                <p class="text-gray-600">Simplified UPI and merchant digital payment support.</p>
             </div>
         </div>
-
-        <!-- Signup Page -->
-        <div id="signup-page" class="page-content hidden">
-            <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-8">
-                <div class="text-center mb-8">
-                    <i class="fas fa-leaf text-green-600 text-3xl mb-4"></i>
-                    <h2 class="text-2xl font-bold text-gray-900">Create Your Account</h2>
-                </div>
-                
-                <form id="signup-form" onsubmit="handleSignup(event)">
-                    <div class="mb-4">
-                        <label for="signup-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                        <input type="text" id="signup-name" required autocomplete="name" minlength="2" maxlength="50" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                        <input type="email" id="signup-email" required autocomplete="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="signup-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                        <input type="password" id="signup-password" required autocomplete="new-password" minlength="8" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <p class="text-xs text-gray-500 mt-1">Minimum 8 characters with letters and numbers</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="signup-confirm-password" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-                        <input type="password" id="signup-confirm-password" required autocomplete="new-password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="signup-role" class="block text-sm font-medium text-gray-700 mb-2">Account Type</label>
-                        <select id="signup-role" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                            <option value="">Select account type</option>
-                            <option value="farmer">Farmer - List carbon credits</option>
-                            <option value="company">Company - Purchase carbon credits</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="flex items-center">
-                            <input type="checkbox" id="terms-agreement" required class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
-                            <span class="ml-2 text-sm text-gray-700">I agree to the <a href="#" class="text-green-600 hover:text-green-700">Terms of Service</a> and <a href="#" class="text-green-600 hover:text-green-700">Privacy Policy</a></span>
-                        </label>
-                    </div>
-                    
-                    <div id="signup-error" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded hidden"></div>
-                    
-                    <button type="submit" id="signup-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
-                        <span id="signup-text">Create Account</span>
-                        <i id="signup-loading" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-                    </button>
-                </form>
-                
-                <div class="mt-6 text-center">
-                    <p class="text-gray-600">Already have an account? 
-                        <a href="#" onclick="showPage('login')" class="text-green-600 hover:text-green-700 font-medium">Login here</a>
-                    </p>
-                </div>
-            </div>
+        <div class="mt-10">
+            <button class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700">Make a Payment</button>
         </div>
+    </section>
 
-        <!-- Marketplace Page -->
-        <div id="marketplace-page" class="page-content hidden">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Priti Carbon Marketplace</h2>
-                <p class="text-gray-600">Browse and purchase verified carbon credits from sustainable farming practices across India.</p>
-            </div>
-            
-            <!-- Filters -->
-            <div class="mb-6 bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Filter Listings</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <label for="filter-state" class="block text-sm font-medium text-gray-700 mb-2">State</label>
-                        <select id="filter-state" onchange="filterMarketplaceListings()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                            <option value="">All States</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Karnataka">Karnataka</option>
-                            <option value="Uttar Pradesh">Uttar Pradesh</option>
-                            <option value="Tamil Nadu">Tamil Nadu</option>
-                            <option value="Gujarat">Gujarat</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Punjab">Punjab</option>
-                            <option value="Haryana">Haryana</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="filter-district" class="block text-sm font-medium text-gray-700 mb-2">District</label>
-                        <input type="text" id="filter-district" onkeyup="filterMarketplaceListings()" placeholder="Enter district name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                    
-                    <div>
-                        <label for="filter-price" class="block text-sm font-medium text-gray-700 mb-2">Max Price (₹)</label>
-                        <input type="number" id="filter-price" onkeyup="filterMarketplaceListings()" placeholder="Maximum price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <button onclick="clearFilters()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-md text-sm font-medium">
-                        Clear Filters
-                    </button>
-                </div>
-            </div>
-            
-            <div id="marketplace-listings" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Listings will be populated by JavaScript -->
-            </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-green-50 text-center">
+        <h3 class="text-3xl font-semibold mb-8">📧 Contact & Support</h3>
+        <p class="text-gray-700 mb-2">General Support: <a href="mailto:support@priticarbon.me"
+                class="text-green-700 underline">support@priticarbon.me</a></p>
+        <p class="text-gray-700 mb-2">Pushkar (Technical): <a href="mailto:pushkar@priticarbon.me"
+                class="text-green-700 underline">pushkar@priticarbon.me</a></p>
+        <p class="text-gray-700 mb-2">Yash (Primary): <a href="mailto:yash@priticarbon.me"
+                class="text-green-700 underline">yash@priticarbon.me</a></p>
+        <div class="mt-8">
+            <img src="assets/priti-carbon-logo-banner.png" alt="Priti Carbon Banner"
+                class="mx-auto rounded-lg shadow-lg max-w-lg" />
         </div>
-
-        <!-- Farmer Dashboard -->
-        <div id="farmer-dashboard" class="page-content hidden">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Farmer Dashboard</h2>
-                <p class="text-gray-600">Manage your carbon credit listings and track your sales.</p>
-            </div>
-            
-            <!-- Real-Time Carbon Credit Chart -->
-            <div class="mb-8">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold text-gray-900">Carbon Credit Market Value</h3>
-                        <div class="flex space-x-2">
-                            <button onclick="updateChartTimeframe('1D')" id="chart-1d" class="px-3 py-1 text-xs bg-green-600 text-white rounded-full">1D</button>
-                            <button onclick="updateChartTimeframe('7D')" id="chart-7d" class="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">7D</button>
-                            <button onclick="updateChartTimeframe('30D')" id="chart-30d" class="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">30D</button>
-                        </div>
-                    </div>
-                    <div class="h-64">
-                        <canvas id="carbon-credit-chart"></canvas>
-                    </div>
-                    <div class="mt-4 flex justify-between text-sm text-gray-600">
-                        <span>Current Price: <span id="current-price" class="font-semibold text-green-600">₹750</span>/ton</span>
-                        <span>Last Updated: <span id="last-updated">Just now</span></span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Dashboard Stats -->
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-green-100">
-                            <i class="fas fa-list text-green-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Total Listings</p>
-                            <p id="total-listings" class="text-2xl font-bold text-gray-900">0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-blue-100">
-                            <i class="fas fa-dollar-sign text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Total Sales</p>
-                            <p class="text-2xl font-bold text-gray-900">$0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-yellow-100">
-                            <i class="fas fa-seedling text-yellow-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">CO₂ Offset</p>
-                            <p id="total-co2" class="text-2xl font-bold text-gray-900">0 tons</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Add New Listing Button -->
-            <div class="mb-8">
-                <button onclick="showAddListingForm()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium">
-                    <i class="fas fa-plus mr-2"></i>Add New Listing
-                </button>
-            </div>
-            
-            <!-- Add Listing Form (Hidden by default) -->
-            <div id="add-listing-form" class="hidden mb-8">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-6">Add New Carbon Credit Listing</h3>
-                    <form id="listing-form" onsubmit="handleAddListing(event)">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="listing-title" class="block text-sm font-medium text-gray-700 mb-2">Title</label>
-                                <input type="text" id="listing-title" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                            
-                            <div>
-                                <label for="listing-quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity (tons of CO₂)</label>
-                                <input type="number" id="listing-quantity" min="1" step="0.1" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                            
-                            <div>
-                                <label for="listing-price" class="block text-sm font-medium text-gray-700 mb-2">Price per unit (₹)</label>
-                                <input type="number" id="listing-price" min="1" step="1" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                            
-                            <div>
-                                <label for="listing-state" class="block text-sm font-medium text-gray-700 mb-2">State</label>
-                                <select id="listing-state" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                                    <option value="">Select State</option>
-                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                    <option value="Assam">Assam</option>
-                                    <option value="Bihar">Bihar</option>
-                                    <option value="Chhattisgarh">Chhattisgarh</option>
-                                    <option value="Goa">Goa</option>
-                                    <option value="Gujarat">Gujarat</option>
-                                    <option value="Haryana">Haryana</option>
-                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                    <option value="Jharkhand">Jharkhand</option>
-                                    <option value="Karnataka">Karnataka</option>
-                                    <option value="Kerala">Kerala</option>
-                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                    <option value="Maharashtra">Maharashtra</option>
-                                    <option value="Manipur">Manipur</option>
-                                    <option value="Meghalaya">Meghalaya</option>
-                                    <option value="Mizoram">Mizoram</option>
-                                    <option value="Nagaland">Nagaland</option>
-                                    <option value="Odisha">Odisha</option>
-                                    <option value="Punjab">Punjab</option>
-                                    <option value="Rajasthan">Rajasthan</option>
-                                    <option value="Sikkim">Sikkim</option>
-                                    <option value="Tamil Nadu">Tamil Nadu</option>
-                                    <option value="Telangana">Telangana</option>
-                                    <option value="Tripura">Tripura</option>
-                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                    <option value="Uttarakhand">Uttarakhand</option>
-                                    <option value="West Bengal">West Bengal</option>
-                                    <option value="Delhi">Delhi</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label for="listing-district" class="block text-sm font-medium text-gray-700 mb-2">District</label>
-                                <input type="text" id="listing-district" required placeholder="Enter district name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                        </div>
-                        
-                        <div class="mt-6">
-                            <label for="listing-description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                            <textarea id="listing-description" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Describe your sustainable farming practices and carbon sequestration methods..."></textarea>
-                        </div>
-                        
-                        <div class="mt-6 flex space-x-4">
-                            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md font-medium">
-                                Add Listing
-                            </button>
-                            <button type="button" onclick="hideAddListingForm()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-6 py-2 rounded-md font-medium">
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- My Listings -->
-            <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-6">My Listings</h3>
-                <div id="farmer-listings" class="space-y-4">
-                    <!-- Farmer's listings will be populated by JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Company Dashboard -->
-        <div id="company-dashboard" class="page-content hidden">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Company Dashboard</h2>
-                <p class="text-gray-600">Track your carbon offset purchases and environmental impact across India.</p>
-            </div>
-            
-            <!-- Dashboard Stats -->
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-blue-100">
-                            <i class="fas fa-shopping-cart text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Total Purchases</p>
-                            <p id="company-total-purchases" class="text-2xl font-bold text-gray-900">0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-green-100">
-                            <i class="fas fa-leaf text-green-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">CO₂ Offset</p>
-                            <p id="company-total-co2" class="text-2xl font-bold text-gray-900">0 tons</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-orange-100">
-                            <i class="fas fa-rupee-sign text-orange-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Total Spend</p>
-                            <p id="company-total-spend" class="text-2xl font-bold text-gray-900">₹0</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- My Purchases -->
-            <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-6">My Purchases</h3>
-                <div id="company-purchases" class="space-y-4">
-                    <div class="bg-white rounded-lg shadow-md p-8 text-center">
-                        <i class="fas fa-shopping-bag text-gray-400 text-4xl mb-4"></i>
-                        <h4 class="text-lg font-bold text-gray-900 mb-2">No Purchases Yet</h4>
-                        <p class="text-gray-600 mb-4">Start offsetting your carbon footprint by purchasing credits from Indian farmers.</p>
-                        <button onclick="showPage('marketplace')" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium">
-                            Browse Marketplace
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Support Page -->
-        <div id="support-page" class="page-content hidden">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Support & Contact Us</h2>
-                <p class="text-gray-600">Get help with your Priti Carbon account and carbon credit trading.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Contact Information -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">
-                        <i class="fas fa-envelope text-green-600 mr-2"></i>Contact Information
-                    </h3>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-center p-4 bg-green-50 rounded-lg">
-                            <i class="fas fa-envelope text-green-600 text-xl mr-4"></i>
-                            <div>
-                                <p class="font-medium text-gray-900">Primary Support</p>
-                                <a href="mailto:yashkhot29@gmail.com" class="text-green-600 hover:text-green-700">yashkhot29@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center p-4 bg-blue-50 rounded-lg">
-                            <i class="fas fa-envelope text-blue-600 text-xl mr-4"></i>
-                            <div>
-                                <p class="font-medium text-gray-900">Technical Support</p>
-                                <a href="mailto:badigerpushkar2@gmail.com" class="text-blue-600 hover:text-blue-700">badigerpushkar2@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center p-4 bg-yellow-50 rounded-lg">
-                            <i class="fas fa-clock text-yellow-600 text-xl mr-4"></i>
-                            <div>
-                                <p class="font-medium text-gray-900">Response Time</p>
-                                <p class="text-gray-600">We typically respond within 24 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ Section -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">
-                        <i class="fas fa-question-circle text-blue-600 mr-2"></i>Frequently Asked Questions
-                    </h3>
-                    
-                    <div class="space-y-4">
-                        <div class="border-b pb-4">
-                            <h4 class="font-medium text-gray-900 mb-2">How do I verify my carbon credits?</h4>
-                            <p class="text-gray-600 text-sm">Our admin team reviews all listings for authenticity. Verification typically takes 2-3 business days.</p>
-                        </div>
-                        
-                        <div class="border-b pb-4">
-                            <h4 class="font-medium text-gray-900 mb-2">What payment methods are accepted?</h4>
-                            <p class="text-gray-600 text-sm">We support online payments via UPI, bank transfer, and offline payments for verified users.</p>
-                        </div>
-                        
-                        <div class="border-b pb-4">
-                            <h4 class="font-medium text-gray-900 mb-2">How are prices determined?</h4>
-                            <p class="text-gray-600 text-sm">Prices are set by farmers based on market rates, farming practices, and verification standards.</p>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-medium text-gray-900 mb-2">Is my data secure?</h4>
-                            <p class="text-gray-600 text-sm">Yes, we use industry-standard encryption and security measures to protect all user data.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Admin Dashboard -->
-        <div id="admin-dashboard" class="page-content hidden">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Admin Dashboard</h2>
-                <p class="text-gray-600">Manage user approvals, listings, and platform security.</p>
-            </div>
-            
-            <!-- Admin Stats -->
-            <div class="grid md:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-blue-100">
-                            <i class="fas fa-users text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Pending Users</p>
-                            <p id="admin-pending-users" class="text-2xl font-bold text-gray-900">0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-yellow-100">
-                            <i class="fas fa-list text-yellow-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Pending Listings</p>
-                            <p id="admin-pending-listings" class="text-2xl font-bold text-gray-900">0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-green-100">
-                            <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Verified Users</p>
-                            <p id="admin-verified-users" class="text-2xl font-bold text-gray-900">0</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-red-100">
-                            <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-600">Flagged Items</p>
-                            <p id="admin-flagged-items" class="text-2xl font-bold text-gray-900">0</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Admin Actions -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- User Management -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">User Management</h3>
-                    <div id="admin-users-list" class="space-y-4">
-                        <div class="text-center py-8 text-gray-500">
-                            <i class="fas fa-users text-4xl mb-4"></i>
-                            <p>No pending user approvals</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Listing Management -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Listing Management</h3>
-                    <div id="admin-listings-list" class="space-y-4">
-                        <div class="text-center py-8 text-gray-500">
-                            <i class="fas fa-list text-4xl mb-4"></i>
-                            <p>No pending listing approvals</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-12">
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i>
-                        <span class="font-bold text-xl text-gray-800">Priti Carbon</span>
-                    </div>
-                    <p class="text-gray-600 text-sm">Connecting Indian farmers and companies for a sustainable future through verified carbon credits.</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-gray-900 mb-4">Platform</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" onclick="showPage('marketplace')" class="text-gray-600 hover:text-green-600">Marketplace</a></li>
-                        <li><a href="#" onclick="showPage('signup')" class="text-gray-600 hover:text-green-600">Sign Up</a></li>
-                        <li><a href="#" onclick="showPage('support')" class="text-gray-600 hover:text-green-600">Support</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="mailto:yashkhot29@gmail.com" class="text-gray-600 hover:text-green-600">Primary Support</a></li>
-                        <li><a href="mailto:badigerpushkar2@gmail.com" class="text-gray-600 hover:text-green-600">Technical Support</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-gray-900 mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="text-gray-600 hover:text-green-600">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-green-600">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-green-600">Cookie Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-200 mt-8 pt-8 text-center">
-                <p class="text-gray-600 text-sm">&copy; 2024 Priti Carbon. All rights reserved. Made in India 🇮🇳</p>
-            </div>
-        </div>
+    <footer class="bg-green-600 text-white text-center py-6">
+        <p>© 2025 Priti Carbon | Made in India 🇮🇳 | Connecting Farmers & Companies for a Sustainable Future</p>
+        <p class="text-sm mt-2">
+            <a href="https://github.com/pushkarbadiger/priti-carbon" class="underline">GitHub Repo</a> •
+            <a href="https://priticarbon.vercel.app" class="underline">Live Site</a>
+        </p>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="js/app.js"></script>
 </body>
+
 </html>
