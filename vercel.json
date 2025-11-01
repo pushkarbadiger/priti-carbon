@@ -11,19 +11,20 @@
     { "src": "/(.*)", "dest": "/index.html" }
   ],
   "env": {
-    "RAZORPAY_KEY_ID": "@razorpay_key_id",
-    "RAZORPAY_KEY_SECRET": "@razorpay_key_secret",
-    "BHARATPE_MERCHANT_ID": "@bharatpe_merchant_id",
-    "BHARATPE_API_KEY": "@bharatpe_api_key",
-    "GOOGLE_PAY_MERCHANT_ID": "@google_pay_merchant_id",
-    "SMTP_HOST": "@smtp_host",
-    "SMTP_PORT": "@smtp_port",
-    "SMTP_USER": "@smtp_user",
-    "SMTP_PASS": "@smtp_pass",
-    "EMAIL_FROM": "@email_from",
-    "DATABASE_URL": "@database_url",
-    "JWT_SECRET": "@jwt_secret"
+  "RAZORPAY_KEY_ID": "dummy_razorpay_key_id",
+  "RAZORPAY_KEY_SECRET": "dummy_razorpay_key_secret",
+  "BHARATPE_MERCHANT_ID": "dummy_bharatpe_merchant_id",
+  "BHARATPE_API_KEY": "dummy_bharatpe_api_key",
+  "GOOGLE_PAY_MERCHANT_ID": "dummy_google_pay_merchant_id",
+  "SMTP_HOST": "smtp.gmail.com",
+  "SMTP_PORT": "587",
+  "SMTP_USER": "support@priticarbon.me",
+  "SMTP_PASS": "dummy_password",
+  "EMAIL_FROM": "support@priticarbon.me",
+  "DATABASE_URL": "mongodb+srv://dummyuser:dummypass@cluster0.mongodb.net/testdb?retryWrites=true&w=majority",
+  "JWT_SECRET": "dummy_jwt_secret_key"
   }
+
 }
 
 
