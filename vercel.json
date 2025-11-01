@@ -7,8 +7,9 @@
     { "src": "js/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  { "src": "/api/(.*)", "dest": "/api/$1" },
+  { "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|pdf))", "dest": "/$1" },
+  { "src": "/(.*)", "dest": "/index.html" }
   ],
   "env": {
     "RAZORPAY_KEY_ID": "dummy_razorpay_key_id",
