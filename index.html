@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priti Carbon - Next-Gen Climate Solutions</title>
+    <meta name="description" content="Leading sustainable climate solutions through transparent carbon credit systems and environmental integrity.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Background Colors */
+            --color-white: #ffffff;
+            --color-off-white: #fafafa;
+            --color-light-grey: #f8f9fa;
+            --color-border: #e5e7eb;
+            
+            /* New Brand Color System */
+            --brand-primary: #719B80;          /* Primary brand color - headings, links, highlights */
+            --text-primary: #2B2B2B;           /* Body and paragraph text */
+            --text-secondary: #5F876F;         /* Muted or secondary text */
+            
+            /* Derived Colors for Gradients and Accents */
+            --brand-light: #8AB19A;            /* Lighter version for hover states */
+            --brand-dark: #5F876F;             /* Darker version for emphasis */
+            --brand-muted: #A8C5B2;            /* Muted version for subtle elements */
+            
+            /* Gradients and Shadows */
+            --gradient-soft: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #ecfdf5 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 249, 255, 0.8) 100%);
+            --color-shadow: rgba(43, 43, 43, 0.04);
+            --color-shadow-light: rgba(43, 43, 43, 0.02);
+            --color-shadow-medium: rgba(43, 43, 43, 0.08);
+            
+            /* Legacy support - map old variables to new brand system */
+            --text-heading: var(--brand-primary);
+            --text-muted: var(--text-secondary);
+            --accent-primary: var(--brand-primary);
+            --accent-sage: var(--brand-primary);
+            --accent-muted: var(--brand-light);
+            --color-soft-green: var(--brand-primary);
+            --color-sage-green: var(--brand-primary);
+            --color-muted-green: var(--brand-light);
+            --color-text-primary: var(--text-primary);
+            --color-text-secondary: var(--text-secondary);
+            --color-text-muted: var(--text-secondary);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient-soft);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        
+        /* Glass Card Effects */
+        .glass-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px var(--color-shadow), 
+                        0 2px 8px var(--color-shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px var(--color-shadow-medium), 
+                        0 4px 16px var(--color-shadow-light);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px var(--color-shadow);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--accent-sage);
+        }
+        
+        .logo i {
+            font-size: 32px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--brand-primary);
+            background: rgba(113, 155, 128, 0.08);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-dark) 100%);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(113, 155, 128, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(113, 155, 128, 0.3);
+            background: linear-gradient(135deg, var(--brand-light) 0%, var(--brand-primary) 100%);
+        }
+        
+        /* Feature Cards Grid */
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 24px;
+        }
+        
+        .feature-card {
+            padding: 40px 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .card-icon {
+            font-size: 48px;
+            color: var(--accent-primary);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .card-icon {
+            color: var(--accent-sage);
+            transform: scale(1.1);
+        }
+        
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        /* Vision Section */
+        .vision-section {
+            padding: 80px 0;
+            background: var(--color-off-white);
+        }
+        
+        .vision-title {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            margin-bottom: 32px;
+            color: #719B80;
+            letter-spacing: -0.01em;
+            text-align: center;
+        }
+        
+        .vision-statement {
+            font-size: clamp(20px, 4vw, 28px);
+            color: #719B80;
+            max-width: 900px;
+            margin: 0 auto 32px;
+            line-height: 1.4;
+            text-align: center;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .vision-supporting {
+            font-size: 18px;
+            color: #2B2B2B;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: 400;
+        }
+        
+        /* Section Layouts */
+        .section {
+            padding: 100px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--text-heading);
+            letter-spacing: -0.01em;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Solutions Grid */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .solution-card {
+            padding: 48px 40px;
+            text-align: left;
+        }
+        
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 32px;
+            color: white;
+        }
+        
+        .solution-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        
+        .solution-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* How It Works Steps */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-top: 80px;
+        }
+        
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-dark) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 auto 24px;
+            box-shadow: 0 8px 24px rgba(113, 155, 128, 0.2);
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 48px;
+            margin-top: 60px;
+        }
+        
+        .about-card {
+            padding: 40px 32px;
+            text-align: center;
+        }
+        
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .insight-card {
+            padding: 40px 32px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .insight-meta {
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .insight-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+            line-height: 1.4;
+        }
+        
+        .insight-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 60px;
+        }
+        
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text-heading);
+        }
+        
+        .contact-item {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .contact-item i {
+            font-size: 20px;
+            color: var(--accent-primary);
+            margin-top: 4px;
+            width: 24px;
+        }
+        
+        .contact-item-content {
+            flex: 1;
+        }
+        
+        .contact-item strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+        
+        .contact-item a {
+            color: var(--accent-sage);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: var(--accent-primary);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            padding: 48px 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-heading);
+            font-size: 14px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-white);
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 3px rgba(113, 155, 128, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-light-grey);
+            padding: 80px 0 40px;
+            margin-top: 100px;
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+        }
+        
+        .footer-section h3 {
+            color: var(--text-heading);
+            margin-bottom: 24px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .footer-section a {
+            color: var(--accent-sage);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--color-border);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 24px;
+                gap: 0;
+                border-top: 1px solid var(--color-border);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 16px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--color-border);
+                color: var(--text-secondary);
+            }
+            
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: var(--accent-primary);
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .vision-section {
+                padding: 60px 0;
+            }
+            
+            .vision-title {
+                margin-bottom: 24px;
+            }
+            
+            .vision-statement {
+                margin-bottom: 24px;
+            }
+            
+            .hero-cards {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-top: 60px;
+            }
+            
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+            
+            .section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            .hero {
+                padding: 100px 16px 60px;
+            }
+            
+            .hero-cards {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-leaf"></i>
+                Priti Carbon
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#insights" class="nav-link">Insights</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Next-Gen Climate Solutions</h1>
+                <p class="hero-subtitle">Driving the future of sustainability through transparent carbon credit systems.</p>
+                <a href="#solutions" class="btn-primary">Learn More</a>
+            </div>
+        </div>
+        
+        <div class="hero-cards">
+            <div class="feature-card glass-card fade-in" onclick="navigateToSection('solutions')">
+                <div class="card-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="card-title">Carbon Credits</h3>
+                <p class="card-description">Verified carbon credits that represent real, measurable environmental impact through rigorous third-party verification standards.</p>
+            </div>
+            
+            <div class="feature-card glass-card fade-in" onclick="navigateToSection('how-it-works')">
+                <div class="card-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="card-title">Verification & Monitoring</h3>
+                <p class="card-description">Comprehensive verification processes and continuous monitoring ensure environmental integrity and credible climate impact.</p>
+            </div>
+            
+            <div class="feature-card glass-card fade-in" onclick="navigateToSection('insights')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="card-title">Climate Insights</h3>
+                <p class="card-description">Expert knowledge and market intelligence to guide sustainable decision-making and effective climate strategies.</p>
+            </div>
+        </div>
+        
+        <!-- Vision Section -->
+        <div class="vision-section">
+            <div class="section">
+                <div class="section-header fade-in">
+                    <h2 class="vision-title">Vision</h2>
+                    <p class="vision-statement">"Priti Carbon envisions a future where carbon is intelligently managed, responsibly transformed, and reintegrated into the ecosystem with measurable impact."</p>
+                    <p class="vision-supporting">By combining industrial expertise with environmental responsibility, Priti Carbon enables industries to reduce waste, lower emissions, and build sustainable value chains where economic growth and ecological balance progress together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="page-section">
+        <div class="section">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Carbon Credit Solutions</h2>
+                <p class="section-subtitle">Understanding carbon credits and their role in global climate action through verified environmental integrity.</p>
+            </div>
+            
+            <div class="solutions-grid">
+                <div class="solution-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="solution-title">What Are Carbon Credits?</h3>
+                    <p class="solution-description">Carbon credits represent one metric ton of carbon dioxide equivalent removed from or prevented from entering the atmosphere. Each credit is verified through rigorous standards to ensure real environmental impact and contribution to global sustainability goals.</p>
+                </div>
+                
+                <div class="solution-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="solution-title">Environmental Integrity</h3>
+                    <p class="solution-description">Our carbon credits adhere to the highest standards of environmental integrity, ensuring additionality, permanence, and real climate benefits. Every credit contributes to measurable emission reductions and sustainable development.</p>
+                </div>
+                
+                <div class="solution-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="solution-title">Third-Party Verification</h3>
+                    <p class="solution-description">All carbon credits undergo independent third-party verification following internationally recognized standards including Gold Standard, Verified Carbon Standard (VCS), and Clean Development Mechanism (CDM) protocols.</p>
+                </div>
+                
+                <div class="solution-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    <h3 class="solution-title">Sustainability Goals</h3>
+                    <p class="solution-description">Carbon credits support organizations in achieving their sustainability commitments while contributing to global climate objectives and the United Nations Sustainable Development Goals through verified environmental projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="page-section">
+        <div class="section">
+            <div class="section-header fade-in">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Our transparent process ensures the highest standards of credibility and environmental impact.</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-item fade-in">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Identification</h3>
+                    <p class="step-description">We identify and evaluate high-quality environmental projects that demonstrate clear additionality and measurable carbon reduction potential.</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Verification</h3>
+                    <p class="step-description">Independent third-party verification bodies assess projects against international standards to ensure credibility and environmental integrity.</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Monitoring</h3>
+                    <p class="step-description">Continuous monitoring and measurement verify ongoing project performance and ensure long-term environmental benefits are maintained.</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Reporting</h3>
+                    <p class="step-description">Transparent reporting provides stakeholders with detailed information on project outcomes, environmental impact, and contribution to climate goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section">
+        <div class="section">
+            <div class="section-header fade-in">
+                <h2 class="section-title">About Priti Carbon</h2>
+                <p class="section-subtitle">Building trust through transparency, expertise, and unwavering commitment to environmental integrity.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="solution-title">Our Mission</h3>
+                    <p class="solution-description">To advance global climate action through transparent, verified carbon credit solutions that create real environmental impact while supporting sustainable development worldwide.</p>
+                </div>
+                
+                <div class="about-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="solution-title">Our Vision</h3>
+                    <p class="solution-description">A world where every organization can contribute to climate solutions through access to the highest quality, most transparent carbon credits that drive measurable environmental change.</p>
+                </div>
+                
+                <div class="about-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="solution-title">Our Commitment</h3>
+                    <p class="solution-description">We are committed to the highest standards of environmental integrity, transparency, and credible climate action through rigorous verification and continuous improvement.</p>
+                </div>
+                
+                <div class="about-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="solution-title">Climate Partnership</h3>
+                    <p class="solution-description">Building lasting partnerships with organizations worldwide to create scalable climate solutions that benefit both the environment and local communities.</p>
+                </div>
+                
+                <div class="about-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="solution-title">Environmental Ethics</h3>
+                    <p class="solution-description">Our ethical approach ensures that every carbon credit represents genuine environmental benefit, supporting both climate goals and sustainable development outcomes.</p>
+                </div>
+                
+                <div class="about-card glass-card fade-in">
+                    <div class="solution-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="solution-title">Expert Network</h3>
+                    <p class="solution-description">Leveraging a global network of climate scientists, verification experts, and sustainability professionals to ensure the highest quality carbon credit standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section id="insights" class="page-section">
+        <div class="section">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Climate Insights</h2>
+                <p class="section-subtitle">Expert knowledge and market intelligence to guide effective climate action and sustainable decision-making.</p>
+            </div>
+            
+            <div class="insights-grid">
+                <article class="insight-card glass-card fade-in">
+                    <div class="insight-meta">Market Intelligence</div>
+                    <h3 class="insight-title">Understanding Carbon Credit Quality Standards</h3>
+                    <p class="insight-excerpt">A comprehensive guide to evaluating carbon credit quality, including key criteria for additionality, permanence, and measurable environmental impact in voluntary carbon markets.</p>
+                </article>
+                
+                <article class="insight-card glass-card fade-in">
+                    <div class="insight-meta">Verification Standards</div>
+                    <h3 class="insight-title">Third-Party Verification: Ensuring Credibility</h3>
+                    <p class="insight-excerpt">Exploring the role of independent verification bodies in maintaining carbon credit integrity and the importance of recognized international standards in climate action.</p>
+                </article>
+                
+                <article class="insight-card glass-card fade-in">
+                    <div class="insight-meta">Climate Science</div>
+                    <h3 class="insight-title">Measuring Environmental Impact in Carbon Projects</h3>
+                    <p class="insight-excerpt">Scientific methodologies for quantifying carbon reduction, monitoring environmental benefits, and ensuring long-term sustainability in carbon offset projects.</p>
+                </article>
+                
+                <article class="insight-card glass-card fade-in">
+                    <div class="insight-meta">Sustainability Strategy</div>
+                    <h3 class="insight-title">Integrating Carbon Credits in Climate Strategies</h3>
+                    <p class="insight-excerpt">Best practices for incorporating high-quality carbon credits into comprehensive climate strategies while maintaining focus on emission reduction priorities.</p>
+                </article>
+                
+                <article class="insight-card glass-card fade-in">
+                    <div class="insight-meta">Global Standards</div>
+                    <h3 class="insight-title">International Carbon Standards Comparison</h3>
+                    <p class="insight-excerpt">Comparative analysis of major carbon credit standards including Gold Standard, VCS, and CDM, highlighting their strengths and applications in different project types.</p>
+                </article>
+                
+                <article class="insight-card glass-card fade-in">
+                    <div class="insight-meta">Innovation</div>
+                    <h3 class="insight-title">Technology in Carbon Credit Monitoring</h3>
+                    <p class="insight-excerpt">How advanced monitoring technologies including satellite imagery, IoT sensors, and blockchain are enhancing transparency and verification in carbon markets.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section">
+        <div class="section">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Connect with our team of carbon credit experts to learn more about sustainable climate solutions.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-item-content">
+                            <strong>General Support</strong>
+                            <a href="mailto:support@priticarbon.me">support@priticarbon.me</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-user-tie"></i>
+                        <div class="contact-item-content">
+                            <strong>Partnership Inquiries</strong>
+                            <a href="mailto:yash@priticarbon.me">yash@priticarbon.me</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-cog"></i>
+                        <div class="contact-item-content">
+                            <strong>Technical Support</strong>
+                            <a href="mailto:pushkar@priticarbon.me">pushkar@priticarbon.me</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-item-content">
+                            <strong>Response Time</strong>
+                            24-hour response guarantee
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form glass-card fade-in" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@company.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-input" placeholder="How can we help you with your sustainability goals?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Priti Carbon</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Leading sustainable climate solutions through transparent carbon credit systems and environmental integrity.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <a href="#solutions">Carbon Credits</a>
+                <a href="#how-it-works">Verification Process</a>
+                <a href="#insights">Climate Insights</a>
+                <a href="#about">Our Mission</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#insights">Knowledge Center</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Support</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:support@priticarbon.me">support@priticarbon.me</a>
+                <a href="mailto:yash@priticarbon.me">yash@priticarbon.me</a>
+                <a href="mailto:pushkar@priticarbon.me">pushkar@priticarbon.me</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Priti Carbon. All rights reserved. Leading transparent climate solutions.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
